@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --ease-organic: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  background: #0D0B09;
+  color: #F4F1EC;
+  font-family: var(--font-sans), Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* TIPOGRAFÍA — serif con carácter, inspirada en la letra del logo real:
+   Yeseva One (redondeada, gruesa, con floritura) para display + logo,
+   Lora para todo lo demás. Nada de sans geométrica tipo Arial. ───── */
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.1;
+}
+
+.font-logo {
+  font-family: var(--font-display), Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.font-sans {
+  font-family: var(--font-sans), Georgia, serif;
+}
+
+/* EYEBROW — etiqueta sutil sobre los títulos */
+.eyebrow {
+  font-family: var(--font-sans), Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #D2924F;
+}
+
+/* Línea decorativa corta debajo de títulos */
+.rule {
+  display: inline-block;
+  width: 56px;
+  height: 3px;
+  background: #D2924F;
+  margin-top: 1.25rem;
+}
+
+/* CTAs ───────────────────────────────────────────────────────── */
+
+.cta-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #D2924F;
+  color: #0D0B09;
+  padding: 16px 32px;
+  font-family: var(--font-sans), Georgia, serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.cta-solid:hover {
+  background: #E3B482;
+}
+
+.cta-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #F4F1EC;
+  padding: 16px 32px;
+  font-family: var(--font-sans), Georgia, serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(244, 241, 236, 0.35);
+}
+
+.cta-outline:hover {
+  border-color: #D2924F;
+  color: #D2924F;
+}
+
+.cta-link {
+  font-family: var(--font-sans), Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #D2924F;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(210, 146, 79, 0.5);
+  transition: all 0.25s ease;
+}
+
+.cta-link:hover {
+  border-bottom-color: #D2924F;
+  color: #E3B482;
+}
+
+/* CARDS ──────────────────────────────────────────────────────── */
+
+.card {
+  background: #16130F;
+  border: 1px solid rgba(244, 241, 236, 0.08);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.card:hover {
+  border-color: rgba(210, 146, 79, 0.4);
+}
+
+/* Hairline borders */
+.hairline { border-color: rgba(244, 241, 236, 0.08); }
+
+/* FOTOS — sin deformar nunca: capa de fondo desenfocada rellena los bordes,
+   la foto real va siempre completa y sin recortar encima ───────── */
+.photo-frame {
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(13, 11, 9, 0.55) 100%);
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+  z-index: 1;
+}
+
+.photo-bg {
+  filter: brightness(0.55) saturate(1.1);
+  transition: filter 0.7s ease;
+}
+
+.photo-fg {
+  filter: brightness(0.82) contrast(1.05) saturate(0.95);
+  transition: filter 0.7s var(--ease-organic), transform 0.9s var(--ease-organic);
+}
+
+.photo-frame:hover .photo-bg {
+  filter: brightness(0.7) saturate(1.15);
+}
+
+.photo-frame:hover .photo-fg {
+  filter: brightness(1) contrast(1.02) saturate(1.05);
+  transform: scale(1.03);
+}
+
+.photo-frame:hover::after {
+  opacity: 0.3;
+}
+
+/* Divider de sección */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(210, 146, 79, 0.3), transparent);
+}
+
+/* Reveal en scroll */
+/* Visible por defecto: si el JS no corre o el observer no dispara, el contenido se ve igual.
+   La animación es un agregado (clase .armed, puesta por JS) — nunca un requisito para ver el contenido. */
+.reveal.armed {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.reveal.armed.in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s ease, transform 1s var(--ease-organic);
+}
+
+/* Selección */
+::selection {
+  background: rgba(210, 146, 79, 0.4);
+  color: #0D0B09;
+}
+
+/* Respeta prefers-reduced-motion: el contenido ya se ve por default (ver .reveal
+   arriba), acá solo se saca el movimiento/transición para quien lo pidió. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal.armed,
+  .reveal.armed.in {
+    transition: none;
+    transform: none;
+  }
+  .photo-bg,
+  .photo-fg {
+    transition: none;
+  }
+  .photo-frame:hover .photo-fg {
+    transform: none;
+  }
+}
