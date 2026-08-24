@@ -31,9 +31,10 @@ html, body {
 }
 
 .font-logo {
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-logo), Georgia, serif;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;
   line-height: 1;
 }
 
@@ -119,16 +120,43 @@ html, body {
   color: #E3B482;
 }
 
+/* NAV — línea que aparece al pasar el cursor, a la altura del borde
+   inferior del header (los <a> ocupan el alto completo del nav vía
+   items-stretch + h-full en el contenedor, así el ::after cae justo
+   sobre la hairline del header). */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #D2924F;
+  transform: scaleX(0);
+  transition: transform 0.3s var(--ease-organic);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
 /* CARDS ──────────────────────────────────────────────────────── */
 
 .card {
   background: #16130F;
   border: 1px solid rgba(244, 241, 236, 0.08);
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
 .card:hover {
-  border-color: rgba(210, 146, 79, 0.4);
+  border-color: rgba(210, 146, 79, 0.55);
+  background: #1A160D;
+  box-shadow: 0 0 0 1px rgba(210, 146, 79, 0.55), 0 0 28px rgba(210, 146, 79, 0.14);
 }
 
 /* Hairline borders */
@@ -217,4 +245,214 @@ html, body {
   .photo-frame:hover .photo-fg {
     transform: none;
   }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   TEMA CLARO ("/blanco") — todo escopado bajo .theme-light, nunca
+   toca ni se mezcla con el tema oscuro de arriba. Reusa la MISMA
+   escala de grises `ink` (ya verificada por contraste), solo invierte
+   qué tono cumple qué rol: ink-950 pasa a ser texto, no fondo.
+   Sin color de acento — el énfasis se hace con negrita cursiva
+   (Playfair Display tiene cursiva real), no con un color.
+   ═══════════════════════════════════════════════════════════════ */
+
+.theme-light {
+  color-scheme: light;
+  background: #FFFFFF;
+  color: #070605; /* ink-950 */
+}
+
+.theme-light .font-display2 {
+  font-family: var(--font-display-light), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+}
+
+.theme-light .font-sans2 {
+  font-family: var(--font-sans-light), -apple-system, sans-serif;
+}
+
+/* Énfasis editorial: negrita cursiva en vez de color */
+.theme-light .accent {
+  font-style: italic;
+  font-weight: 700;
+}
+
+.theme-light .eyebrow2 {
+  font-family: var(--font-sans-light), -apple-system, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #5C534A; /* ink-400, 7.5:1 sobre blanco */
+}
+
+.theme-light .rule2 {
+  display: inline-block;
+  width: 56px;
+  height: 2px;
+  background: #070605;
+  margin-top: 1.25rem;
+}
+
+.theme-light .cta-solid2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #070605;
+  color: #FFFFFF;
+  padding: 16px 32px;
+  font-family: var(--font-sans-light), -apple-system, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+.theme-light .cta-solid2:hover { background: #2A2521; }
+
+.theme-light .cta-outline2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #070605;
+  padding: 16px 32px;
+  font-family: var(--font-sans-light), -apple-system, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(7, 6, 5, 0.25);
+}
+.theme-light .cta-outline2:hover { border-color: #070605; }
+
+.theme-light .cta-link2 {
+  font-family: var(--font-sans-light), -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #070605;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(7, 6, 5, 0.35);
+  transition: all 0.25s ease;
+}
+.theme-light .cta-link2:hover { border-bottom-color: #070605; }
+
+.theme-light .nav-link2 {
+  position: relative;
+}
+.theme-light .nav-link2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #070605;
+  transform: scaleX(0);
+  transition: transform 0.3s var(--ease-organic);
+}
+.theme-light .nav-link2:hover::after,
+.theme-light .nav-link2:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Header que se esconde al bajar y reaparece al subir (HeaderBlanco.tsx
+   decide cuándo vía JS de scroll; acá solo se anima el translateY). */
+.nav-hide {
+  transition: transform 0.35s var(--ease-organic);
+}
+.nav-hide-up {
+  transform: translateY(-100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-hide { transition: none; }
+}
+
+.theme-light .card2 {
+  background: #FFFFFF;
+  border: 1px solid rgba(7, 6, 5, 0.12);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.theme-light .card2:hover {
+  border-color: #070605;
+  box-shadow: 0 0 0 1px #070605, 0 10px 28px rgba(7, 6, 5, 0.1);
+}
+
+.theme-light .hairline { border-color: rgba(7, 6, 5, 0.12); }
+
+.theme-light .divider2 {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(7, 6, 5, 0.2), transparent);
+}
+
+/* Fotos más luminosas que en el tema oscuro (ahí se oscurecían para
+   fundirse con el fondo negro; acá el fondo es blanco). */
+.theme-light .photo-bg { filter: brightness(0.92) saturate(1.02); }
+.theme-light .photo-fg { filter: brightness(1) contrast(1.02) saturate(1); }
+.theme-light .photo-frame:hover .photo-bg { filter: brightness(0.96) saturate(1.05); }
+.theme-light .photo-frame::after { background: none; }
+
+.theme-light ::selection {
+  background: rgba(7, 6, 5, 0.15);
+  color: #070605;
+}
+
+/* PANEL OSCURO — header, reseñas y footer: negro sólido con texto claro,
+   mismo negro (ink-950) que el tema oscuro. El fondo lo pone bg-ink-950
+   directo en cada lugar (translúcido+blur en el nav, sólido en
+   reseñas/footer); acá solo se resuelve el color de los hijos. */
+.theme-light .panel-dark {
+  color: #F4F1EC;
+}
+
+.theme-light .panel-dark .eyebrow2 {
+  color: rgba(244, 241, 236, 0.65) !important;
+}
+
+.theme-light .panel-dark.hairline,
+.theme-light .panel-dark .hairline {
+  border-color: rgba(244, 241, 236, 0.15);
+}
+
+.theme-light .panel-dark .text-\[\#3A342E\] {
+  color: rgba(244, 241, 236, 0.9);
+}
+
+.theme-light .panel-dark .text-\[\#5C534A\] {
+  color: rgba(244, 241, 236, 0.65);
+}
+
+.theme-light .panel-dark .nav-link2::after {
+  background: #F4F1EC;
+}
+
+.theme-light .panel-dark .cta-solid2 {
+  background: #F4F1EC;
+  color: #070605;
+}
+.theme-light .panel-dark .cta-solid2:hover {
+  background: #FFFFFF;
+}
+
+.theme-light .panel-dark .cta-link2 {
+  color: #F4F1EC;
+  border-bottom-color: rgba(244, 241, 236, 0.4);
+}
+.theme-light .panel-dark .cta-link2:hover {
+  border-bottom-color: #F4F1EC;
+  color: #FFFFFF;
+}
+
+.theme-light .panel-dark .card2 {
+  background: rgba(244, 241, 236, 0.05);
+  border-color: rgba(244, 241, 236, 0.14);
+}
+.theme-light .panel-dark .card2:hover {
+  border-color: #F4F1EC;
+  box-shadow: 0 0 0 1px #F4F1EC, 0 10px 28px rgba(0, 0, 0, 0.35);
 }

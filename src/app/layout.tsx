@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Yeseva_One, Lora } from "next/font/google";
+import { Yeseva_One, Lora, Cinzel } from "next/font/google";
 import "./globals.css";
 
 const yesevaOne = Yeseva_One({
@@ -14,6 +14,13 @@ const lora = Lora({
   weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  variable: "--font-logo",
   display: "swap",
 });
 
@@ -42,7 +49,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${yesevaOne.variable} ${lora.variable}`}>
+    <html lang="es" className={`${yesevaOne.variable} ${lora.variable} ${cinzel.variable}`}>
       <body className="min-h-screen bg-ink-950 text-ink-50 antialiased">
         {children}
       </body>

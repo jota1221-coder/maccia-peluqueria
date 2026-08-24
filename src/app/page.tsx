@@ -1,22 +1,7 @@
 import { Logo } from "@/components/Logo";
 import Reveal from "@/components/Reveal";
 import { FramedPhoto } from "@/components/FramedPhoto";
-
-const WHATSAPP_NUMBER = "5491140307491";
-const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola! Quiero reservar un turno en Maccia Peluquería")}`;
-
-const SERVICIOS = [
-  { nombre: "Corte", desc: "Corte clásico o de tendencia, adaptado a tu estilo.", img: "/fotos/corte-fade.png" },
-  { nombre: "Barba", desc: "Perfilado y arreglo de barba con navaja.", img: "/fotos/barba.png" },
-  { nombre: "Diseños craneales", desc: "Diseños y hard part a mano alzada.", img: "/fotos/craneal.jpg" },
-  { nombre: "Colorimetría", desc: "Color, mechas y tratamientos de color.", img: "/fotos/color.jpg" },
-];
-
-const RESEÑAS = [
-  { nombre: "Mabel Gamarra", texto: "Excelente peluquería, muy buena atención y los mejores precios de Martínez, recomiendo!!!" },
-  { nombre: "Ezequiel Robledo", texto: "El número 1. No tarda veinte años en cortar y encima corta bien. Un lujo." },
-  { nombre: "Pablo Guazzetti", texto: "Muy buena atención y excelente los precios." },
-];
+import { WHATSAPP_LINK, SERVICIOS, RESEÑAS } from "@/lib/content";
 
 export default function Home() {
   return (
@@ -25,11 +10,11 @@ export default function Home() {
       <nav className="fixed top-0 inset-x-0 z-50 bg-ink-950/90 backdrop-blur-sm border-b hairline">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
           <Logo size={34} />
-          <div className="hidden md:flex items-center gap-8 eyebrow">
-            <a href="#servicios" className="hover:text-copper-300 transition-colors">Servicios</a>
-            <a href="#academia" className="hover:text-copper-300 transition-colors">Academia</a>
-            <a href="#resenas" className="hover:text-copper-300 transition-colors">Reseñas</a>
-            <a href="#ubicacion" className="hover:text-copper-300 transition-colors">Ubicación</a>
+          <div className="hidden md:flex h-full items-stretch gap-8 eyebrow">
+            <a href="#servicios" className="nav-link flex items-center hover:text-copper-300 transition-colors">Servicios</a>
+            <a href="#academia" className="nav-link flex items-center hover:text-copper-300 transition-colors">Academia</a>
+            <a href="#resenas" className="nav-link flex items-center hover:text-copper-300 transition-colors">Reseñas</a>
+            <a href="#ubicacion" className="nav-link flex items-center hover:text-copper-300 transition-colors">Ubicación</a>
           </div>
           <a href={WHATSAPP_LINK} target="_blank" rel="noopener" className="cta-solid !py-3 !px-6 !text-xs">
             Reservar turno
@@ -63,7 +48,7 @@ export default function Home() {
             </div>
           </Reveal>
           <Reveal className="lg:col-span-5" delay={150}>
-            <FramedPhoto src="/fotos/corte-fade.png" alt="Corte de pelo en Maccia Peluquería" priority />
+            <FramedPhoto src="/fotos/corte-fade.png" alt="Corte de pelo en Maccia Peluquería" priority fit="cover" />
           </Reveal>
         </div>
       </section>
@@ -83,7 +68,7 @@ export default function Home() {
             {SERVICIOS.map((s, i) => (
               <Reveal key={s.nombre} delay={i * 80}>
                 <div className="card h-full overflow-hidden">
-                  <FramedPhoto src={s.img} alt={s.nombre} aspect="aspect-[4/3]" className="!border-0" />
+                  <FramedPhoto src={s.img} alt={s.nombre} aspect="aspect-[4/3]" className="!border-0" fit="cover" position={s.pos} />
                   <div className="p-7">
                     <p className="font-display text-xl text-ink-50">{s.nombre}</p>
                     <p className="mt-3 text-sm text-ink-100/60 font-sans leading-relaxed">{s.desc}</p>
@@ -101,6 +86,8 @@ export default function Home() {
         alt="Interior de Maccia Peluquería"
         aspect="h-64 lg:h-80 w-full"
         className="!border-0"
+        fit="cover"
+        position="center 42%"
       />
 
       <div className="divider max-w-7xl mx-auto" />
@@ -115,14 +102,14 @@ export default function Home() {
             </h2>
             <span className="rule" />
             <p className="mt-8 text-ink-100 font-sans leading-relaxed max-w-xl">
-              Clases de peluquería profesional, dictadas en el mismo local, de la mano de Leonardo &ldquo;Leo&rdquo; Mennelli. Técnica de corte, barbería y color — para el que se quiere formar de verdad, no solo mirar tutoriales.
+              Clases de peluquería profesional, dictadas en el mismo local, de la mano de Leonardo &ldquo;Leo&rdquo; Mennelli. Técnica de corte, barbería y color — para el que se quiere formar de verdad.
             </p>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener" className="cta-link inline-block mt-8">
               Consultar la próxima camada →
             </a>
           </Reveal>
           <Reveal className="lg:col-span-5" delay={150}>
-            <FramedPhoto src="/fotos/leo.png" alt="Leonardo Mennelli, dueño de Maccia Peluquería">
+            <FramedPhoto src="/fotos/leo.png" alt="Leonardo Mennelli, dueño de Maccia Peluquería" fit="cover" position="center 20%">
               <div className="absolute bottom-0 inset-x-0 z-10 bg-gradient-to-t from-ink-950 to-transparent pt-10 pb-5 px-6 pointer-events-none">
                 <p className="eyebrow">Leonardo &ldquo;Leo&rdquo; Mennelli</p>
               </div>
@@ -195,7 +182,7 @@ export default function Home() {
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener" className="cta-link">WhatsApp</a>
               <a href="tel:+541140307491" className="cta-link">011 4030-7491</a>
             </div>
-            <FramedPhoto src="/fotos/fachada.png" alt="Fachada de Maccia Peluquería" aspect="aspect-[16/9]" className="mt-10" />
+            <FramedPhoto src="/fotos/fachada.png" alt="Fachada de Maccia Peluquería" aspect="aspect-[16/9]" className="mt-10" fit="cover" position="70% center" />
           </Reveal>
           <Reveal className="lg:col-span-7" delay={200}>
             <div className="aspect-[5/4] overflow-hidden border hairline">
@@ -257,7 +244,10 @@ export default function Home() {
             No es el sitio oficial de Maccia Peluquería ni mantiene relación comercial con el establecimiento.
           </p>
           <p className="text-center text-[10px] mt-5 eyebrow">
-            Demo desarrollada por Joaquin Rao · 2026
+            Demo desarrollada por Joaquin Rao · 2026 · Versión A
+          </p>
+          <p className="text-center mt-4">
+            <a href="/blanco" className="cta-link !text-[11px]">Ver la otra versión (clara) →</a>
           </p>
         </div>
       </footer>

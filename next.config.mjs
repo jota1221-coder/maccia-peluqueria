@@ -1,13 +1,18 @@
+const isDev = process.env.NODE_ENV !== 'production';
+
 const securityHeaders = [
   {
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",
+      // Next dev mode evalúa los chunks (eval-source-map) y necesita 'unsafe-eval'
+      // para hidratar — sin esto React nunca arranca en el cliente en local.
+      // En producción esto no se usa, así que ahí queda igual de estricto.
+      `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data:",
       "font-src 'self' data:",
-      "connect-src 'self'",
+      `connect-src 'self'${isDev ? ' ws:' : ''}`,
       "frame-src https://www.google.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
