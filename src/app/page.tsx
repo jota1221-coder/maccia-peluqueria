@@ -61,7 +61,7 @@ export default function Home() {
           <Reveal>
             <p className="eyebrow mb-4">01 — Servicios</p>
             <h2 className="font-display text-3xl lg:text-5xl text-ink-50 max-w-lg">
-              Oficio de barbero, <span className="text-copper-300">de verdad</span>.
+              Servicios <span className="text-copper-300">Maccia</span>.
             </h2>
           </Reveal>
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">

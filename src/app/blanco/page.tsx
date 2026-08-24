@@ -63,7 +63,7 @@ export default function Blanco() {
           <Reveal>
             <p className="eyebrow2 mb-4">01 — Servicios</p>
             <h2 className="font-display2 text-3xl lg:text-5xl max-w-lg">
-              Oficio de barbero, <span className="accent">de verdad</span>.
+              Servicios <span className="accent">Maccia</span>.
             </h2>
           </Reveal>
         </div>
