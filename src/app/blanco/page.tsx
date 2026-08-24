@@ -3,7 +3,7 @@ import { HeaderBlanco } from "@/components/HeaderBlanco";
 import Reveal from "@/components/Reveal";
 import { FramedPhoto } from "@/components/FramedPhoto";
 import { CortesMarquee } from "@/components/CortesMarquee";
-import { WHATSAPP_LINK, SERVICIOS, RESEÑAS } from "@/lib/content";
+import { WHATSAPP_LINK, WHATSAPP_ACADEMIA, WHATSAPP_AUTOR, waLink, SERVICIOS, RESEÑAS } from "@/lib/content";
 
 // Tira de "distintos cortes" en movimiento continuo — fotos más chatas
 // (4:3, no cuadradas) para que no ocupe tanta altura, en vez de una sola
@@ -15,7 +15,7 @@ const CORTES_TIRA = [
   { src: "/fotos/corte-texturizado.jpg", alt: "Corte texturizado en barbería", position: "60% 30%" },
   { src: "/fotos/corte-perfilado.jpg", alt: "Perfilado a tijera en barbería", position: "center 30%" },
   { src: "/fotos/corte-nuca.jpg", alt: "Detalle de nuca en barbería", position: "center 25%" },
-  { src: "/fotos/barberia-sillas.jpg", alt: "Interior de una barbería con sillones clásicos", position: "center 60%" },
+  { src: "/fotos/salon.png", alt: "Interior de Maccia Peluquería", position: "center 42%" },
 ];
 
 export default function Blanco() {
@@ -90,7 +90,7 @@ export default function Blanco() {
                         {s.nombre}
                       </h3>
                       <p className="font-sans2 text-[#3A342E] leading-relaxed text-lg">{s.descLarga}</p>
-                      <a href={WHATSAPP_LINK} target="_blank" rel="noopener" className="cta-link2 inline-block mt-8">
+                      <a href={waLink(s.consulta)} target="_blank" rel="noopener" className="cta-link2 inline-block mt-8">
                         Consultar por WhatsApp →
                       </a>
                     </div>
@@ -122,7 +122,7 @@ export default function Blanco() {
             <p className="mt-8 text-[#3A342E] font-sans2 leading-relaxed max-w-xl">
               Clases de peluquería profesional, dictadas en el mismo local, de la mano de Leonardo &ldquo;Leo&rdquo; Mennelli. Técnica de corte, barbería y color — para el que se quiere formar de verdad.
             </p>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener" className="cta-link2 inline-block mt-8">
+            <a href={WHATSAPP_ACADEMIA} target="_blank" rel="noopener" className="cta-link2 inline-block mt-8">
               Consultar la próxima camada →
             </a>
           </Reveal>
@@ -255,8 +255,10 @@ export default function Blanco() {
             Este sitio es un proyecto de demostración técnica desarrollado de forma independiente.
             No es el sitio oficial de Maccia Peluquería ni mantiene relación comercial con el establecimiento.
           </p>
-          <p className="text-center text-[10px] mt-5 eyebrow2">
-            Demo desarrollada por Joaquin Rao · 2026 · Versión B
+          <p className="text-center mt-5">
+            <a href={WHATSAPP_AUTOR} target="_blank" rel="noopener" className="cta-link2 !text-[10px]">
+              Demo desarrollada por Joaquín Rao · 2026 · Versión B
+            </a>
           </p>
           <p className="text-center mt-4">
             <a href="/" className="cta-link2 !text-[11px]">Ver la otra versión (oscura) →</a>

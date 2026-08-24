@@ -1,7 +1,7 @@
 import { Logo } from "@/components/Logo";
 import Reveal from "@/components/Reveal";
 import { FramedPhoto } from "@/components/FramedPhoto";
-import { WHATSAPP_LINK, SERVICIOS, RESEÑAS } from "@/lib/content";
+import { WHATSAPP_LINK, WHATSAPP_ACADEMIA, WHATSAPP_AUTOR, SERVICIOS, RESEÑAS } from "@/lib/content";
 
 export default function Home() {
   return (
@@ -104,7 +104,7 @@ export default function Home() {
             <p className="mt-8 text-ink-100 font-sans leading-relaxed max-w-xl">
               Clases de peluquería profesional, dictadas en el mismo local, de la mano de Leonardo &ldquo;Leo&rdquo; Mennelli. Técnica de corte, barbería y color — para el que se quiere formar de verdad.
             </p>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener" className="cta-link inline-block mt-8">
+            <a href={WHATSAPP_ACADEMIA} target="_blank" rel="noopener" className="cta-link inline-block mt-8">
               Consultar la próxima camada →
             </a>
           </Reveal>
@@ -243,8 +243,10 @@ export default function Home() {
             Este sitio es un proyecto de demostración técnica desarrollado de forma independiente.
             No es el sitio oficial de Maccia Peluquería ni mantiene relación comercial con el establecimiento.
           </p>
-          <p className="text-center text-[10px] mt-5 eyebrow">
-            Demo desarrollada por Joaquin Rao · 2026 · Versión A
+          <p className="text-center mt-5">
+            <a href={WHATSAPP_AUTOR} target="_blank" rel="noopener" className="cta-link !text-[10px]">
+              Demo desarrollada por Joaquín Rao · 2026 · Versión A
+            </a>
           </p>
           <p className="text-center mt-4">
             <a href="/blanco" className="cta-link !text-[11px]">Ver la otra versión (clara) →</a>
