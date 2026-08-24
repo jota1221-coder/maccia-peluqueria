@@ -2,13 +2,20 @@ import { LogoLight } from "@/components/LogoLight";
 import { HeaderBlanco } from "@/components/HeaderBlanco";
 import Reveal from "@/components/Reveal";
 import { FramedPhoto } from "@/components/FramedPhoto";
-import { Gallery } from "@/components/Gallery";
+import { CortesMarquee } from "@/components/CortesMarquee";
 import { WHATSAPP_LINK, SERVICIOS, RESEÑAS } from "@/lib/content";
 
-const GALERIA_SALON = [
-  { src: "/fotos/salon.png", alt: "Interior de Maccia Peluquería", position: "center 42%" },
-  { src: "/fotos/corte-fade.png", alt: "Corte en proceso en Maccia Peluquería", position: "center 65%" },
-  { src: "/fotos/barba.png", alt: "Arreglo de barba en Maccia Peluquería", position: "center 60%" },
+// Tira de "distintos cortes" en movimiento continuo — fotos más chatas
+// (4:3, no cuadradas) para que no ocupe tanta altura, en vez de una sola
+// foto estirada a un panorámico que ninguna imagen real tiene de forma
+// natural. Todas de Unsplash, licencia libre.
+const CORTES_TIRA = [
+  { src: "/fotos/corte-detalle.jpg", alt: "Detalle de corte a máquina en barbería", position: "60% center" },
+  { src: "/fotos/corte-tijera.jpg", alt: "Corte a tijera en barbería", position: "center 35%" },
+  { src: "/fotos/corte-texturizado.jpg", alt: "Corte texturizado en barbería", position: "60% 30%" },
+  { src: "/fotos/corte-perfilado.jpg", alt: "Perfilado a tijera en barbería", position: "center 30%" },
+  { src: "/fotos/corte-nuca.jpg", alt: "Detalle de nuca en barbería", position: "center 25%" },
+  { src: "/fotos/barberia-sillas.jpg", alt: "Interior de una barbería con sillones clásicos", position: "center 60%" },
 ];
 
 export default function Blanco() {
@@ -69,12 +76,12 @@ export default function Blanco() {
                 <div className="grid lg:grid-cols-2 items-stretch border-t hairline">
                   <div className={`relative aspect-[4/5] lg:aspect-auto ${reversed ? "lg:order-2" : ""}`}>
                     <FramedPhoto
-                      src={s.img}
+                      src={s.imgBloque ?? s.img}
                       alt={s.nombre}
                       aspect="h-full w-full"
                       className="!border-0"
                       fit="cover"
-                      position={s.pos}
+                      position={s.posBloque ?? s.pos}
                     />
                   </div>
                   <div className={`flex items-center px-6 lg:px-16 py-14 lg:py-20 ${reversed ? "lg:order-1" : ""}`}>
@@ -99,7 +106,7 @@ export default function Blanco() {
         </div>
       </section>
 
-      <Gallery images={GALERIA_SALON} aspect="h-64 lg:h-80 w-full" />
+      <CortesMarquee images={CORTES_TIRA} />
 
       <div className="divider2 max-w-7xl mx-auto" />
 
@@ -173,7 +180,7 @@ export default function Blanco() {
           <Reveal className="lg:col-span-5">
             <p className="eyebrow2 mb-4">04 — Ubicación</p>
             <h2 className="font-display2 text-3xl lg:text-5xl leading-tight">
-              Martínez,<br /><span className="accent">Zona Norte</span>.
+              Martínez,<br /><span className="accent">San Isidro</span>.
             </h2>
             <span className="rule2" />
             <ul className="mt-10 space-y-6">

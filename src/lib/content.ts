@@ -8,6 +8,10 @@ export const SERVICIOS = [
     descLarga: "Clásico o de tendencia, a tijera o a máquina, siempre pensado para tu tipo de cabello y la forma de tu cara — no al revés. Antes de cortar, charla corta: qué tenés, qué buscás y cómo lo vas a mantener en casa. De ahí sale el resultado, no de una foto de Instagram.",
     img: "/fotos/corte-fade.png",
     pos: "center 65%",
+    // Foto ancha (Unsplash, licencia libre) para el bloque grande de /blanco —
+    // corte-fade.png es un primer plano muy cerrado, se ve mal estirado a ese formato.
+    imgBloque: "/fotos/corte-ambiente.jpg",
+    posBloque: "65% center",
   },
   {
     nombre: "Barba",
@@ -15,6 +19,8 @@ export const SERVICIOS = [
     descLarga: "Perfilado con navaja, la técnica de siempre para un contorno preciso y una piel que no sufre. Se define primero el largo y la forma que acompañan tu cara, después se afila el detalle — línea de cuello, patillas, bigote — con calma, sin apurar el filo.",
     img: "/fotos/barba.png",
     pos: "center 60%",
+    imgBloque: "/fotos/barba-ambiente.jpg",
+    posBloque: "30% 30%",
   },
   {
     nombre: "Diseños craneales",

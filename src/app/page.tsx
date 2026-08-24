@@ -165,7 +165,7 @@ export default function Home() {
           <Reveal className="lg:col-span-5">
             <p className="eyebrow mb-4">04 — Ubicación</p>
             <h2 className="font-display text-3xl lg:text-5xl text-ink-50 leading-tight">
-              Martínez,<br /><span className="text-copper-300">Zona Norte</span>.
+              Martínez,<br /><span className="text-copper-300">San Isidro</span>.
             </h2>
             <span className="rule" />
             <ul className="mt-10 space-y-6">
