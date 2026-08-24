@@ -74,7 +74,7 @@ export default function Blanco() {
             return (
               <Reveal key={s.nombre}>
                 <div className="grid lg:grid-cols-2 items-stretch border-t hairline">
-                  <div className={`relative aspect-[4/5] lg:aspect-auto ${reversed ? "lg:order-2" : ""}`}>
+                  <div className={`relative aspect-[4/5] lg:aspect-auto order-2 ${reversed ? "lg:order-2" : "lg:order-1"}`}>
                     <FramedPhoto
                       src={s.imgBloque ?? s.img}
                       alt={s.nombre}
@@ -84,7 +84,7 @@ export default function Blanco() {
                       position={s.posBloque ?? s.pos}
                     />
                   </div>
-                  <div className={`flex items-center px-6 lg:px-16 py-14 lg:py-20 ${reversed ? "lg:order-1" : ""}`}>
+                  <div className={`flex items-center px-6 lg:px-16 py-14 lg:py-20 order-1 ${reversed ? "lg:order-1" : "lg:order-2"}`}>
                     <div className="max-w-md">
                       <h3 className="font-display2 text-4xl lg:text-6xl uppercase leading-[0.95] mb-6">
                         {s.nombre}
