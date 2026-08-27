@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Logo } from "@/components/Logo";
 import Reveal from "@/components/Reveal";
 import { FramedPhoto } from "@/components/FramedPhoto";
@@ -24,7 +25,31 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative pt-44 pb-28 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 relative grid lg:grid-cols-12 gap-14 items-center">
+          <div className="absolute inset-0" aria-hidden>
+            <Image
+              src="/fotos/salon.png"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+              style={{ objectPosition: "center 45%", filter: "brightness(0.42) saturate(0.9)" }}
+            />
+            {/* Más oscuro del lado del texto que del lado de la foto enmarcada */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(7,6,5,0.93) 0%, rgba(7,6,5,0.88) 42%, rgba(7,6,5,0.66) 100%)",
+              }}
+            />
+            {/* Funde con la sección que sigue, para que no quede un corte duro */}
+            <div
+              className="absolute inset-x-0 bottom-0 h-32"
+              style={{ background: "linear-gradient(180deg, transparent, #0D0B09)" }}
+            />
+          </div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 grid lg:grid-cols-12 gap-14 items-center">
           <Reveal className="lg:col-span-7">
             <p className="eyebrow mb-6">Peluquería &amp; Barbería · Martínez</p>
             <h1 className="font-brand text-5xl lg:text-7xl text-ink-50 leading-[0.95]">
@@ -80,15 +105,6 @@ export default function Home() {
           <p className="mt-8 text-sm text-ink-100/60 font-sans italic">Consultanos precios por WhatsApp.</p>
         </div>
       </section>
-
-      <FramedPhoto
-        src="/fotos/salon.png"
-        alt="Interior de Maccia Peluquería"
-        aspect="h-64 lg:h-80 w-full"
-        className="!border-0"
-        fit="cover"
-        position="center 42%"
-      />
 
       <div className="divider max-w-7xl mx-auto" />
 
