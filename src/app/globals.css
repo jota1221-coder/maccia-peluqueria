@@ -19,15 +19,15 @@ html, body {
   line-height: 1.5;
 }
 
-/* TIPOGRAFÍA — serif con carácter, inspirada en la letra del logo real:
-   Yeseva One (redondeada, gruesa, con floritura) para display + logo,
-   Lora para todo lo demás. Nada de sans geométrica tipo Arial. ───── */
+/* TIPOGRAFÍA — la misma en los dos temas: Playfair Display para títulos,
+   Work Sans para texto, Cormorant Garamond para el header. Lo único que
+   cambia entre tema oscuro y claro son los colores. ───────────────── */
 
 .font-display {
   font-family: var(--font-display), Georgia, serif;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
 }
 
 .font-logo {
@@ -282,14 +282,14 @@ html, body {
 }
 
 .theme-light .font-display2 {
-  font-family: var(--font-display-light), Georgia, serif;
+  font-family: var(--font-display), Georgia, serif;
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.08;
 }
 
 .theme-light .font-sans2 {
-  font-family: var(--font-sans-light), -apple-system, sans-serif;
+  font-family: var(--font-sans), -apple-system, sans-serif;
 }
 
 /* Énfasis editorial: negrita cursiva en vez de color */
@@ -299,7 +299,7 @@ html, body {
 }
 
 .theme-light .eyebrow2 {
-  font-family: var(--font-sans-light), -apple-system, sans-serif;
+  font-family: var(--font-sans), -apple-system, sans-serif;
   font-size: 11px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
@@ -323,7 +323,7 @@ html, body {
   background: #070605;
   color: #FFFFFF;
   padding: 16px 32px;
-  font-family: var(--font-sans-light), -apple-system, sans-serif;
+  font-family: var(--font-sans), -apple-system, sans-serif;
   font-size: 15px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -340,7 +340,7 @@ html, body {
   background: transparent;
   color: #070605;
   padding: 16px 32px;
-  font-family: var(--font-sans-light), -apple-system, sans-serif;
+  font-family: var(--font-sans), -apple-system, sans-serif;
   font-size: 15px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -350,7 +350,7 @@ html, body {
 .theme-light .cta-outline2:hover { border-color: #070605; }
 
 .theme-light .cta-link2 {
-  font-family: var(--font-sans-light), -apple-system, sans-serif;
+  font-family: var(--font-sans), -apple-system, sans-serif;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.05em;

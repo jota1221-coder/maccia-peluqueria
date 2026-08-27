@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import { Yeseva_One, Lora, Cormorant_Garamond } from "next/font/google";
+import { Playfair_Display, Work_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
-const yesevaOne = Yeseva_One({
+// Las tres caras del sitio se cargan UNA sola vez acá y las usan los dos
+// temas. Antes /blanco cargaba su propia copia encima de estas: 8 archivos
+// de fuente para una página, el 55% de su peso.
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
 
-const lora = Lora({
+const workSans = Work_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -51,7 +54,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${yesevaOne.variable} ${lora.variable} ${cormorant.variable}`}>
+    <html lang="es" className={`${playfair.variable} ${workSans.variable} ${cormorant.variable}`}>
       <body className="min-h-screen bg-ink-950 text-ink-50 antialiased">
         {children}
       </body>
