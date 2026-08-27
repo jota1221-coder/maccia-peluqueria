@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Yeseva_One, Lora, Cinzel } from "next/font/google";
+import { Yeseva_One, Lora, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 const yesevaOne = Yeseva_One({
@@ -17,10 +17,12 @@ const lora = Lora({
   display: "swap",
 });
 
-const cinzel = Cinzel({
+// Cara del header (logo + menú). Solo el peso que se usa, para no
+// engordar la página: las fuentes ya son el grueso de su peso.
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["500", "600"],
-  variable: "--font-logo",
+  weight: ["600"],
+  variable: "--font-header",
   display: "swap",
 });
 
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${yesevaOne.variable} ${lora.variable} ${cinzel.variable}`}>
+    <html lang="es" className={`${yesevaOne.variable} ${lora.variable} ${cormorant.variable}`}>
       <body className="min-h-screen bg-ink-950 text-ink-50 antialiased">
         {children}
       </body>

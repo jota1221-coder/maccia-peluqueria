@@ -31,10 +31,10 @@ html, body {
 }
 
 .font-logo {
-  font-family: var(--font-logo), Georgia, serif;
+  font-family: var(--font-header), Georgia, serif;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.14em;
   line-height: 1;
 }
 
@@ -126,6 +126,9 @@ html, body {
    sobre la hairline del header). */
 .nav-link {
   position: relative;
+  font-family: var(--font-header), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.24em;
 }
 
 .nav-link::after {
@@ -360,6 +363,9 @@ html, body {
 
 .theme-light .nav-link2 {
   position: relative;
+  font-family: var(--font-header), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.24em;
 }
 .theme-light .nav-link2::after {
   content: "";

@@ -1,4 +1,4 @@
-import { Playfair_Display, Work_Sans, Cinzel } from "next/font/google";
+import { Playfair_Display, Work_Sans, Cormorant_Garamond } from "next/font/google";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -15,16 +15,16 @@ const workSans = Work_Sans({
   display: "swap",
 });
 
-const cinzel = Cinzel({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["500", "600"],
-  variable: "--font-logo",
+  weight: ["600"],
+  variable: "--font-header",
   display: "swap",
 });
 
 export default function BlancoLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${playfair.variable} ${workSans.variable} ${cinzel.variable} theme-light min-h-screen`}>
+    <div className={`${playfair.variable} ${workSans.variable} ${cormorant.variable} theme-light min-h-screen`}>
       {children}
     </div>
   );
