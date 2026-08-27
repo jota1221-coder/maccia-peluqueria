@@ -25,6 +25,7 @@ const workSans = Work_Sans({
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["600"],
+  style: ["normal", "italic"],
   variable: "--font-header",
   display: "swap",
 });

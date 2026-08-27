@@ -30,6 +30,21 @@ html, body {
   line-height: 1.08;
 }
 
+/* Título "Maccia Peluquería" del hero — misma cara que el logo del header,
+   pero sin mayúscula ni el espaciado del wordmark chico. */
+.font-brand {
+  font-family: var(--font-header), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.02;
+}
+
+/* Cormorant se carga solo en 600: que la itálica del título no pida 700,
+   porque el navegador lo falsearía engrosando el trazo. */
+.theme-light .font-brand .accent {
+  font-weight: 600;
+}
+
 .font-logo {
   font-family: var(--font-header), Georgia, serif;
   font-weight: 600;

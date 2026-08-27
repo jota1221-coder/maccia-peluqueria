@@ -27,7 +27,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10 relative grid lg:grid-cols-12 gap-14 items-center">
           <Reveal className="lg:col-span-7">
             <p className="eyebrow mb-6">Peluquería &amp; Barbería · Martínez</p>
-            <h1 className="font-display text-5xl lg:text-7xl text-ink-50 leading-[0.95]">
+            <h1 className="font-brand text-5xl lg:text-7xl text-ink-50 leading-[0.95]">
               Maccia<br /><span className="text-copper-300">Peluquería</span>
             </h1>
             <span className="rule" />

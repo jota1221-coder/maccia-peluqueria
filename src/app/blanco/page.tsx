@@ -29,7 +29,7 @@ export default function Blanco() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10 relative grid lg:grid-cols-12 gap-14 items-center">
           <Reveal className="lg:col-span-7">
             <p className="eyebrow2 mb-6">Peluquería &amp; Barbería · Martínez</p>
-            <h1 className="font-display2 text-5xl lg:text-7xl leading-[0.95]">
+            <h1 className="font-brand text-5xl lg:text-7xl leading-[0.95]">
               Maccia<br /><span className="accent">Peluquería</span>
             </h1>
             <span className="rule2" />
