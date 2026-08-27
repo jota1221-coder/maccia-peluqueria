@@ -143,7 +143,11 @@ html, body {
   position: relative;
   font-family: var(--font-header), Georgia, serif;
   font-weight: 600;
-  letter-spacing: 0.24em;
+  /* 13px y no 11 como el resto de los eyebrows: Cormorant es un serif de
+     trazo fino y a 11px las astas se pierden. Menos espaciado también,
+     que a mayor tamaño ya no hace falta tanto. */
+  font-size: 13px;
+  letter-spacing: 0.18em;
 }
 
 .nav-link::after {
@@ -380,7 +384,8 @@ html, body {
   position: relative;
   font-family: var(--font-header), Georgia, serif;
   font-weight: 600;
-  letter-spacing: 0.24em;
+  font-size: 13px;
+  letter-spacing: 0.18em;
 }
 .theme-light .nav-link2::after {
   content: "";
@@ -462,6 +467,10 @@ html, body {
 
 .theme-light .panel-dark .text-\[\#5C534A\] {
   color: rgba(244, 241, 236, 0.65);
+}
+
+.theme-light .panel-dark .nav-link2 {
+  color: rgba(244, 241, 236, 0.92) !important;
 }
 
 .theme-light .panel-dark .nav-link2::after {
